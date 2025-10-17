@@ -4,32 +4,26 @@ const express = require("express");
 // settiamo il router
 const router = express.Router();
 
+// importiamo il controller
+const postController = require('../controllers/postController');
+
+// Rotte di CRUD per i post del blog
 // index
-router.get('/', function (req, res) {
-    res.send('Lista dei post');
-});
+router.get('/', postController.index);
+
 // show
-router.get('/:id', function (req, res) {
-    res.send('Dettagli del post ' + req.params.id);
-});
+router.get('/:id', postController.show);
+
 // store
-router.post('/', function (req, res) {
-    res.send('Creazione nuovo post');
-});
+router.post('/', postController.store);
 
 // update
-router.put('/:id', function (req, res) {
-    res.send('Modifica integrale del post ' + req.params.id);
-});
+router.put('/:id', postController.update);
 
 // modify
-router.patch('/:id', function (req, res) {
-    res.send('Modifica parziale del post ' + req.params.id);
-});
+router.patch('/:id', postController.modify);
 
 // destroy
-router.delete('/:id', function (req, res) {
-    res.send('Eliminazione del post ' + req.params.id);
-});
+router.delete('/:id', postController.destroy);
 
 module.exports = router;
