@@ -28,6 +28,29 @@ function show(req, res) {
 
 function store(req, res) {
     console.log('dati:', req.body);
+
+      // Creiamo un nuovo id tramite incremento all ultimo presente
+    const newId = blogPosts[blogPosts.length - 1].id + 1;
+
+    // Creiamo un nuovo post
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        image: req.body.image,
+        content: req.body.content,
+        tags: req.body.tags
+    }
+
+    // Aggiungiamo il nuovo post nel blog
+    blogPosts.push(newPost);
+
+    // controllo
+    console.log(blogPosts);
+
+
+    // Restituiamo lo status corretto e il nuovo post
+    res.status(201);
+    res.json(newPost);
 }
 
 function update(req, res) {
