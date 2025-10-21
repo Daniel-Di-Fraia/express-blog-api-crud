@@ -2,10 +2,14 @@
 const blogPosts = require('../data/postsArray');
 
 function index(req, res) {
+    //prova per vedere errore 500
+    esempio.get();
+
     res.json(blogPosts);
 }
 
 function show(req, res) {
+
     // recuperiamo l'id dall' URL e convertiamolo in un numero
     const id = parseInt(req.params.id)
 
